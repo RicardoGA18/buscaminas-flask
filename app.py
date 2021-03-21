@@ -54,5 +54,17 @@ def get_user(id):
         data_user[column[i]] = row[i]
     return jsonify(data_user)
 
+@app.route('/api/feedback', methods=['POST'])
+def add_feedback():
+  if(request.method == 'POST'):
+    body = request.json
+    name = body['name']
+    email = body['email']
+    message = body['message']
+    cur = mysql.connection.cursor()
+    cur.execute("INSERT INTO feedback(name,email,message) VALUES (%s,%s,%s)", (name,email,message))
+    mysql.connection.commit()
+    return jsonify({'response':True})
+
 if __name__ == '__main__':
     app.run(port = 5000, debug = True)
