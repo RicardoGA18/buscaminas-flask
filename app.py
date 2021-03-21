@@ -41,9 +41,10 @@ def add_user():
 def get_user(id):
   if(request.method == 'GET'):
     cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM users WHERE id ={0}".format(id))
+    newQuery = """SELECT * FROM users WHERE users.id = '%s'""" % (id)
+    cur.execute(newQuery)
     result = cur.fetchall()
-    field = cur.description()
+    field = cur.description
     column = []
     for i in field:
       column.append(i[0])
