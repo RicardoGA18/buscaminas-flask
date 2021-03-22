@@ -36,6 +36,7 @@
                     "content": {
                         "application/json":{
                             "schema":{
+                                "$ref": "#/components/schemas/user"
                             }
                         }
                     }
@@ -77,6 +78,7 @@
                         "required":true,
                         "description":"User ID",
                         "schema":{
+                            "$ref":"#/components/schemas/id"
                         }
                     }
                 ],
@@ -84,6 +86,7 @@
                     "200": {
                         "description":"OK",
                         "schema":{
+                            "$ref": "#/components/schemas/user"
                         }
                     },
                     "400": {
@@ -171,9 +174,31 @@
             }
         }
     },
-    "components":{
-        "schemas":{
-            
+    "components": {
+        "schemas": {
+            "user": {
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "username": {
+                        "type":"string"
+                    },
+                    "email": {
+                        "type":"string"
+                    },
+                    "img": {
+                        "type":"string"
+                    }
+                }
+            },
+            "id": {
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    }
+                }
+            }
         }
     }
 }
