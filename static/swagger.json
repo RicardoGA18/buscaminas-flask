@@ -1,0 +1,179 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "description": "Minesweeper Backend with Flask",
+        "version": "1.0.0",
+        "title": "Buscaminas PvP with Flask",
+        "contact":{
+            "email": "ricardo.gambini18@outlook.com"
+        },
+        "license":{
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "servers": [
+        {
+            "url": "/"
+        }
+    ],
+    "tags":[
+        {
+            "name": "Info request",
+            "description": "API for requesting users info and records"
+        }
+    ],
+    "paths":{
+        "/api/users": {
+            "post": {
+                "tags":[
+                    "Info request"
+                ],
+                "summary": "Creates new users",
+                "requestBody": {
+                    "description": "Info request post object",
+                    "required": true,
+                    "content": {
+                        "application/json":{
+                            "schema":{
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201":{
+                        "description": "OK",
+                        "schema":{
+                        }
+                    },
+                    "400":{
+                        "description": "Failed. Incorrect user data."
+                    }
+                }
+            }
+        },
+        "/api/users/{id}": {
+            "parameters": [
+                {
+                    "name":"id",
+                    "in": "path",
+                    "required": true,
+                    "description": "User ID we want to find.",
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Info request"
+                ],
+                "summary": "Get a user with given ID",
+                "parameters":[
+                    {
+                        "in":"path",
+                        "name":"id",
+                        "required":true,
+                        "description":"User ID",
+                        "schema":{
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description":"OK",
+                        "schema":{
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Misunderstood Request."
+                    },
+                    "404": {
+                        "description": "Failed. User not found."
+                    }
+                }
+            }
+        },
+        "/api/feedback": {
+            "post": {
+                "tags":[
+                    "Info request"
+                ],
+                "summary":"Creates feedback",
+                "requestBody":{
+                    "description":"Feedback post object",
+                    "required":true,
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                            }
+                        }
+                    }
+                },
+                "produces":[
+                    "application/json"
+                ],
+                "responses":{
+                    "201":{
+                        "description":"OK",
+                        "schema":{
+                        }
+                    },
+                    "400":{
+                        "description":"Failed. Incorrect feedback data."
+                    }
+                }
+            }
+        },
+        "/api/ranking": {
+            "post":{
+                "tags":[
+                    "Info request"
+                ],
+                "summary":"Saves users records",
+                "requestBody":{
+                    "description":"Record request post object",
+                    "required":true,
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                            }
+                        }
+                    }
+                },
+                "produces":[
+                    "application/json"
+                ],
+                "responses":{
+                    "201":{
+                        "description":"OK",
+                        "schema":{
+                        }
+                    },
+                    "400":{
+                        "description":"Failed. Incorrect record data."
+                    }
+                }
+            },
+            "get":{
+                "tags":[
+                    "Info request"
+                ],
+                "summary":"Returns records",
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components":{
+        "schemas":{
+            
+        }
+    }
+}
