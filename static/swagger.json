@@ -48,6 +48,7 @@
                     "201":{
                         "description": "OK",
                         "schema":{
+                            "$ref": "#/components/schemas/id"
                         }
                     },
                     "400":{
@@ -110,6 +111,7 @@
                     "content":{
                         "application/json":{
                             "schema":{
+                                "$ref": "#/components/schemas/feedback"
                             }
                         }
                     }
@@ -121,6 +123,7 @@
                     "201":{
                         "description":"OK",
                         "schema":{
+                            "$ref": "#/components/schemas/id"
                         }
                     },
                     "400":{
@@ -141,6 +144,7 @@
                     "content":{
                         "application/json":{
                             "schema":{
+                                "$ref": "#/components/schemas/ranking"
                             }
                         }
                     }
@@ -152,6 +156,7 @@
                     "201":{
                         "description":"OK",
                         "schema":{
+                            "$ref": "#/components/schemas/id"
                         }
                     },
                     "400":{
@@ -168,6 +173,7 @@
                     "200":{
                         "description":"OK",
                         "schema":{
+                            "$ref": "#/components/schemas/ranking"
                         }
                     }
                 }
@@ -196,6 +202,32 @@
                 "properties": {
                     "id": {
                         "type": "string"
+                    }
+                }
+            },
+            "feedback": {
+                "properties": {
+                    "name": {
+                        "type":"string"
+                    },
+                    "email": {
+                        "type":"string"
+                    },
+                    "message": {
+                        "type":"string"
+                    }
+                }
+            },
+            "ranking": {
+                "properties": {
+                    "username": {
+                        "type":"string"
+                    },
+                    "time": {
+                        "type":"integer"
+                    },
+                    "img": {
+                        "type":"string"
                     }
                 }
             }
