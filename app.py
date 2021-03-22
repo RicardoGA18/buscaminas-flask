@@ -83,16 +83,13 @@ def add_feedback():
 def manage_rankings():
   if(request.method == 'POST'):
     body = request.json
-    uuid = body['id']
     username = body['username']
     img = body['img']
     time = body['time']
     cur = mysql.connection.cursor()
-    cur.execute("INSERT INTO ranking(id,username,img,time) VALUES (%s,%s,%s,%s)", (uuid,username,img,time))
-    cur.execute("INSERT INTO users(last_scores) VALUES (%s) WHERE users.id = '%s'", (time, id))
+    cur.execute("INSERT INTO ranking(username,img,time) VALUES (%s,%s,%s)", (username,img,time))
     mysql.connection.commit()
     return jsonify({
-      'id': uuid,
       'username': username,
       'img': img,
       'time': time
@@ -105,11 +102,13 @@ def manage_rankings():
     column = []
     for i in field:
       column.append(i[0])
-    data_ranking = {}
+    jsonData_List = []
     for row in results:
+      data_ranking = {}
       for i in range(len(column)):
         data_ranking[column[i]] = row[i]
-    return jsonify(data_ranking)
+      jsonData_List.append(data_ranking)
+    return jsonify(jsonData_List)
 
 if __name__ == '__main__':
     app.run(port = 5000, debug = True)
